@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O'Café - Le vrai goût du Sénégal | Café Touba & Machines</title>
+    <meta name="description" content="O'Café produit du café Touba premium et fabrique des machines de torréfaction au Sénégal. Commandez en ligne, livraison Dakar et régions.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6F4E37;
+            --secondary: #D4A574;
+            --accent: #2D5016;
+            --light: #F5F5DC;
+            --dark: #1A1A1A;
+            --gray: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--dark);
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #E5B685;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Products */
+        #produits {
+            background: var(--light);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            color: white;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .team-avatar {
+            width: 100px;
+            height: 100px;
+            background: var(--secondary);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .team-member h4 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .team-member p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Contact Form */
+        #contact {
+            background: var(--light);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--gray);
+        }
+
+        /* Certifications Badge */
+        .certifications {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            color: var(--primary);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: transform 0.3s;
+            z-index: 999;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content, .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Order Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-close {
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">☕ O'CAFÉ</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil" onclick="closeMenu()">Accueil</a></li>
+                <li><a href="#produits" onclick="closeMenu()">Produits</a></li>
+                <li><a href="#apropos" onclick="closeMenu()">À Propos</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <h1>☕ Le vrai goût du Sénégal</h1>
+        <p>Café Touba premium & Machines de torréfaction Made in Dakar</p>
+        <div class="cta-buttons">
+            <a href="#produits" class="btn btn-primary">Découvrir nos produits</a>
+            <a href="#contact" class="btn btn-secondary">Commander maintenant</a>
+        </div>
+        <div class="certifications">
+            <div class="cert-badge">✓ Certifié ISO 9001</div>
+            <div class="cert-badge">✓ Certifié ISO 22000</div>
+            <div class="cert-badge">✓ 100% Sénégalais</div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🏭</div>
+                <h3>Machines Locales</h3>
+                <p>Torréfacteurs et moulins fabriqués au Sénégal, accessibles et durables</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">☕</div>
+                <h3>Café Premium</h3>
+                <p>5 variantes de café Touba : Classique, Citron, Gingembre, Moringa, Baobab</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎓</div>
+                <h3>Formation Incluse</h3>
+                <p>Accompagnement des entrepreneurs dans la transformation du café</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Qualité Garantie</h3>
+                <p>Certifications ISO 9001 & 22000 pour votre sécurité</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section id="produits">
+        <h2 class="section-title">Nos Produits</h2>
+        <p class="section-subtitle">Du café artisanal aux machines professionnelles</p>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">☕</div>
+                <div class="product-info">
+                    <h3>Café Touba Classique</h3>
+                    <p class="product-description">Notre recette originale avec clou de girofle et poivre de Guinée</p>
+                    <p class="product-price">3 500 FCFA / 500g</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Café Touba Classique', 3500)">Commander</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🍋</div>
+                <div class="product-info">
+                    <h3>Café Touba Citron</h3>
+                    <p class="product-description">Une touche d'agrume pour une fraîcheur unique</p>
+                    <p class="product-price">4 000 FCFA / 500g</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Café Touba Citron', 4000)">Commander</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🫚</div>
+                <div class="product-info">
+                    <h3>Café Touba Gingembre</h3>
+                    <p class="product-description">L'énergie du gingembre dans votre tasse</p>
+                    <p class="product-price">4 000 FCFA / 500g</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Café Touba Gingembre', 4000)">Commander</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🌿</div>
+                <div class="product-info">
+                    <h3>Café Touba Moringa</h3>
+                    <p class="product-description">Les bienfaits du moringa dans votre café</p>
+                    <p class="product-price">4 500 FCFA / 500g</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Café Touba Moringa', 4500)">Commander</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">⚙️</div>
+                <div class="product-info">
+                    <h3>Torréfacteur Semi-Industriel</h3>
+                    <p class="product-description">Capacité 20 kg/batch, idéal petites unités</p>
+                    <p class="product-price">750 000 FCFA</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Torréfacteur Semi-Industriel', 750000)">Commander</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">🔧</div>
+                <div class="product-info">
+                    <h3>Moulin Électrique Pro</h3>
+                    <p class="product-description">Moulin professionnel 5-10 kg/heure</p>
+                    <p class="product-price">600 000 FCFA</p>
+                    <button class="btn btn-primary" onclick="openOrderModal('Moulin Électrique Pro', 600000)">Commander</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="apropos">
+        <h2 class="section-title">À Propos d'O'Café</h2>
+        <p class="section-subtitle">Une équipe passionnée au service de l'excellence</p>
+        
+        <div class="about-content">
+            <div class="about-image">☕</div>
+            <div>
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Notre Histoire</h3>
+                <p style="margin-bottom: 1rem;">
+                    O'Café est né de la passion de trois entrepreneures sénégalaises déterminées à valoriser le savoir-faire local. 
+                    Nous combinons tradition et innovation pour produire le meilleur café Touba du Sénégal.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    En parallèle de notre production de café, nous fabriquons des machines de torréfaction et des moulins 
+                    accessibles pour permettre à tous les entrepreneurs de se lancer dans cette filière porteuse.
+                </p>
+                <p>
+                    Aujourd'hui, nous servons plus de 100 clients à Dakar et dans les régions, avec l'ambition de devenir 
+                    une référence régionale en Afrique de l'Ouest.
+                </p>
+            </div>
+        </div>
+
+        <h3 style="color: var(--primary); text-align: center; margin: 3rem 0 2rem;">Notre Équipe</h3>
+        <div class="team">
+            <div class="team-member">
+                <div class="team-avatar">👩🏾</div>
+                <h4>Oumy Touré</h4>
+                <p>Gestion Financière & Maintenance</p>
+                <p style="margin-top: 0.5rem; color: var(--primary);">📞 77 224 37 71</p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">👩🏾‍💼</div>
+                <h4>Oumou Diallo</h4>
+                <p>Production & Qualité</p>
+                <p style="margin-top: 0.5rem; color: var(--primary);">📞 77 405 74 06</p>
+            </div>
+            <div class="team-member">
+                <div class="team-avatar">👨🏾‍💻</div>
+                <h4>Cheikh Sall</h4>
+                <p>Digital & Communication</p>
+                <p style="margin-top: 0.5rem; color: var(--primary);">📞 77 783 93 59</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <p class="section-subtitle">Commandez ou demandez un devis personnalisé</p>
+        
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem;">Informations de contact</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <strong>Adresse</strong><br>
+                        Parcelles Assainies, Dakar, Sénégal
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <strong>Téléphones</strong><br>
+                        77 224 37 71<br>
+                        77 405 74 06<br>
+                        77 783 93 59
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <strong>Email</strong><br>
+                        contact@ocafe.sn
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">⏰</div>
+                    <div>
+                        <strong>Horaires</strong><br>
+                        Lundi - Samedi: 8h - 19h<br>
+                        Dimanche: Sur rendez-vous
+                    </div>
+                </div>
+
+                <h4 style="color: var(--primary); margin: 2rem 0 1rem;">Suivez-nous</h4>
+                <div class="social-links">
+                    <a href="#" style="color: var(--primary);">📘</a>
+                    <a href="#" style="color: var(--primary);">📷</a>
+                    <a href="#" style="color: var(--primary);">💬</a>
+                </div>
+            </div>
+
+            <form onsubmit="handleSubmit(event)">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Envoyez-nous un message</h3>
+                
+                <div class="form-group">
+                    <label for="name">Nom complet *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Téléphone *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Sujet *</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Choisissez...</option>
+                        <option value="commande">Commande café</option>
+                        <option value="machine">Achat machine</option>
+                        <option value="formation">Formation</option>
+                        <option value="info">Demande d'information</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>O'CAFÉ</h3>
+                <p>Le vrai goût du Sénégal</p>
+                <p style="margin-top: 1rem;">Café Touba premium et machines de transformation Made in Dakar.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <a href="#accueil">Accueil</a>
+                <a href="#produits">Nos Produits</a>
+                <a href="#apropos">À Propos</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Produits</h3>
+                <a href="#produits">Café Touba</a>
+                <a href="#produits">Machines</a>
+                <a href="#contact">Formation</a>
+                <a href="#contact">Services</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📞 77 224 37 71</p>
+                <p>📧 contact@ocafe.sn</p>
+                <p>📍 Dakar, Sénégal</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 O'Café. Tous droits réservés. | Made with ❤️ in Senegal</p>
+            <p style="margin-top: 0.5rem;">Programme FORCE-N en partenariat avec Reach for Change</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/221772243771" target="_blank" class="whatsapp-float" title="Contactez-nous sur WhatsApp">
+        💬
+    </a>
+
+    <!-- Order Modal -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 style="color: var(--primary);">Commander ce produit</h3>
+                <span class="modal-close" onclick="closeOrderModal()">&times;</span>
+            </div>
+            <form onsubmit="handleOrderSubmit(event)">
+                <input type="hidden" id="orderProduct" name="product">
+                <input type="hidden" id="orderPrice" name="price">
+
+                <div class="form-group">
+                    <label>Produit sélectionné</label>
+                    <p id="selectedProduct" style="font-weight: bold; color: var(--primary);"></p>
+                    <p id="selectedPrice" style="font-weight: bold; color: var(--accent);"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderQuantity">Quantité *</label>
+                    <input type="number" id="orderQuantity" name="quantity" min="1" value="1" required onchange="updateTotal()">
+                </div>
+
+                <div class="form-group">
+                    <label>Total</label>
+                    <p id="orderTotal" style="font-size: 1.5rem; font-weight: bold; color: var(--accent);"></p>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderName">Nom complet *</label>
+                    <input type="text" id="orderName" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderPhone">Téléphone *</label>
+                    <input type="tel" id="orderPhone" name="phone" required placeholder="+221 77 XXX XX XX">
+                </div>
+
+                <div class="form-group">
+                    <label for="orderAddress">Adresse de livraison *</label>
+                    <textarea id="orderAddress" name="address" required placeholder="Adresse complète, quartier, point de repère..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderCity">Ville/Région *</label>
+                    <select id="orderCity" name="city" required onchange="updateDelivery()">
+                        <option value="">Choisissez...</option>
+                        <option value="dakar">Dakar (2 000 FCFA)</option>
+                        <option value="banlieue">Banlieue Dakar (3 000 FCFA)</option>
+                        <option value="thies">Thiès (5 000 FCFA)</option>
+                        <option value="saint-louis">Saint-Louis (5 000 FCFA)</option>
+                        <option value="kaolack">Kaolack (5 000 FCFA)</option>
+                        <option value="autre">Autre région (5 000 FCFA)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Frais de livraison</label>
+                    <p id="deliveryFee" style="font-weight: bold; color: var(--gray);">0 FCFA</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderPayment">Mode de paiement *</label>
+                    <select id="orderPayment" name="payment" required>
+                        <option value="">Choisissez...</option>
+                        <option value="orange">Orange Money</option>
+                        <option value="wave">Wave</option>
+                        <option value="free">Free Money</option>
+                        <option value="cash">Paiement à la livraison (+1 000 FCFA)</option>
+                    </select>
+                </div>
+
+                <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    <p style="font-weight: bold; color: var(--primary);">TOTAL À PAYER</p>
+                    <p id="grandTotal" style="font-size: 2rem; font-weight: bold; color: var(--accent);">0 FCFA</p>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Confirmer la commande</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Order Modal
+        let currentProduct = '';
+        let currentPrice = 0;
+
+        function openOrderModal(product, price) {
+            currentProduct = product;
+            currentPrice = price;
+            
+            document.getElementById('orderProduct').value = product;
+            document.getElementById('orderPrice').value = price;
+            document.getElementById('selectedProduct').textContent = product;
+            document.getElementById('selectedPrice').textContent = price.toLocaleString() + ' FCFA';
+            document.getElementById('orderQuantity').value = 1;
+            
+            updateTotal();
+            
+            document.getElementById('orderModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateTotal() {
+            const quantity = parseInt(document.getElementById('orderQuantity').value) || 1;
+            const subtotal = currentPrice * quantity;
+            document.getElementById('orderTotal').textContent = subtotal.toLocaleString() + ' FCFA';
+            updateGrandTotal();
+        }
+
+        function updateDelivery() {
+            const city = document.getElementById('orderCity').value;
+            let deliveryFee = 0;
+            
+            switch(city) {
+                case 'dakar':
+                    deliveryFee = 2000;
+                    break;
+                case 'banlieue':
+                    deliveryFee = 3000;
+                    break;
+                default:
+                    deliveryFee = 5000;
+            }
+            
+            document.getElementById('deliveryFee').textContent = deliveryFee.toLocaleString() + ' FCFA';
+            updateGrandTotal();
+        }
+
+        function updateGrandTotal() {
+            const quantity = parseInt(document.getElementById('orderQuantity').value) || 1;
+            const subtotal = currentPrice * quantity;
+            const deliveryText = document.getElementById('deliveryFee').textContent;
+            const delivery = parseInt(deliveryText.replace(/[^0-9]/g, '')) || 0;
+            const payment = document.getElementById('orderPayment').value;
+            const cashFee = payment === 'cash' ? 1000 : 0;
+            
+            const grandTotal = subtotal + delivery + cashFee;
+            document.getElementById('grandTotal').textContent = grandTotal.toLocaleString() + ' FCFA';
+        }
+
+        document.getElementById('orderPayment').addEventListener('change', updateGrandTotal);
+
+        // Close modal on outside click
+        document.getElementById('orderModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeOrderModal();
+            }
+        });
+
+        // Contact Form Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Format WhatsApp message
+            const message = `🆕 NOUVELLE DEMANDE O'CAFÉ
+
+📋 Informations:
+• Nom: ${data.name}
+• Téléphone: ${data.phone}
+• Email: ${data.email || 'Non renseigné'}
+• Sujet: ${data.subject}
+
+💬 Message:
+${data.message}
+
+---
+Envoyé depuis le site O'Café`;
+
+            const whatsappURL = `https://wa.me/221772243771?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+            
+            alert('✅ Votre message a été préparé ! Vous allez être redirigé vers WhatsApp pour l\'envoyer.');
+            event.target.reset();
+        }
+
+        // Order Form Handler
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            const quantity = data.quantity;
+            const subtotal = currentPrice * quantity;
+            const deliveryText = document.getElementById('deliveryFee').textContent;
+            const delivery = parseInt(deliveryText.replace(/[^0-9]/g, '')) || 0;
+            const cashFee = data.payment === 'cash' ? 1000 : 0;
+            const grandTotal = subtotal + delivery + cashFee;
+            
+            // Payment method labels
+            const paymentMethods = {
+                'orange': 'Orange Money',
+                'wave': 'Wave',
+                'free': 'Free Money',
+                'cash': 'Paiement à la livraison'
+            };
+
+            // Format WhatsApp message
+            const message = `🛒 NOUVELLE COMMANDE O'CAFÉ
+
+📦 Produit: ${data.product}
+💰 Prix unitaire: ${currentPrice.toLocaleString()} FCFA
+🔢 Quantité: ${quantity}
+💵 Sous-total: ${subtotal.toLocaleString()} FCFA
+
+👤 Client:
+• Nom: ${data.name}
+• Téléphone: ${data.phone}
+
+📍 Livraison:
+• Adresse: ${data.address}
+• Ville: ${data.city.toUpperCase()}
+• Frais de livraison: ${delivery.toLocaleString()} FCFA
+
+💳 Paiement: ${paymentMethods[data.payment]}
+${data.payment === 'cash' ? '• Frais paiement livraison: 1 000 FCFA\n' : ''}
+
+💰 TOTAL À PAYER: ${grandTotal.toLocaleString()} FCFA
+
+---
+Commande envoyée depuis www.ocafe.sn`;
+
+            const whatsappURL = `https://wa.me/221772243771?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+            
+            alert('✅ Votre commande a été préparée ! Vous allez être redirigé vers WhatsApp pour la confirmer avec notre équipe.');
+            
+            closeOrderModal();
+            event.target.reset();
+        }
+
+        // Scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out';
+                    entry.target.style.opacity = '1';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card, .product-card, .team-member');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                observer.observe(card);
+            });
+        });
+
+        // Active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = 'var(--primary)';
+                    link.style.fontWeight = 'bold';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
